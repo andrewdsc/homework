@@ -3,19 +3,31 @@ package com.train
 import java.util.*
 
 fun main(args: Array<String>) {
+    var check_point = true
     var scanner = Scanner(System.`in`)
-    print("Please enter number of tickets: ")
-    var tickets = scanner.nextInt()
-    print("How many round-trip tickets:  ")
-    var round_trip = scanner.nextInt()
-    var ticket = TicketKotlin(tickets,round_trip)
-    ticket.calculator()
+
+    while (check_point) {
+        print("Please enter number of tickets: ")
+        var tickets = scanner.nextInt()
+        if (tickets == -1) {
+            check_point = false
+            println("退出購票系統!!!")
+        }
+        else
+        {
+            print("How many round-trip tickets:  ")
+            var round_trip = scanner.nextInt()
+            var ticket = TicketKotlin(tickets, round_trip)
+            ticket.calculator()
+        }
+    }
 }
 
 class TicketKotlin(var tickets:Int, var round_trip:Int){
     var tickets_money = 0.0
     var error_message = ""
     var tickets_remainder = 0
+
     fun calculator()
     {
         if (tickets > 0) {
